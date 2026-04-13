@@ -1,15 +1,23 @@
 package teste;
 
-import banco.modelo.ContaCorente;
+import banco.modelo.ContaCorrente;
 import banco.modelo.ContaPoupanca;
 
 public class TesteConta {
     public static void main(String[] args) {
-        Conta conta1 = new ContaCorente("Priscila", 1000);
-        System.out.println("Dados da conta corrente: \nTitular: "+conta1.getTitular() + "\nSaldo: " + conta1.getSaldo());
 
-        ContaPoupanca cont2 = new ContaCorente("Priscila", 1000);
-        System.out.println("Dados da conta corrente: \nTitular: "+conta1.getTitular() + "\nSaldo: " + conta1.getSaldo());
+        ContaCorrente contaCorrente1 = new ContaCorrente("Mathias", 3.06);
+        contaCorrente1.dadosConta();
+        contaCorrente1.realizarDeposito(100);
+        contaCorrente1.consultarSaldo();
+        contaCorrente1.realizarSaque(57);
+        contaCorrente1.consultarSaldo();
 
+        System.out.println("----------------------");
+
+        ContaPoupanca contaPoupanca1 = new ContaPoupanca("Miguel", 27.50);
+        contaPoupanca1.dadosConta();
+        contaPoupanca1.realizarTransferencia(10, 32150070);
+        contaPoupanca1.consultarSaldo();
     }
 }
