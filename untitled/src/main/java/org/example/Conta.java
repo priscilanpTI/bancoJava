@@ -1,4 +1,5 @@
-package banco.modelo;
+package org.example;
+
 public abstract class Conta {
    private double saldo;
    private String titular;
@@ -8,7 +9,7 @@ public abstract class Conta {
         this.saldo = saldoInicial;
     }
     public double getSaldo (){
-        return "saldo";
+        return +saldo;
     }
 
     public String getTitular() {
@@ -19,7 +20,7 @@ public abstract class Conta {
         return "O saldo é: " + "saldo";
     }
 
-    public String realizaSaque(double "valor") {
+    public String realizaSaque(double valor ) {
         if (valor > 0) {
             if (valor<=saldo) {
                 saldo -= valor;
