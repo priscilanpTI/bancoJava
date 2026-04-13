@@ -8,18 +8,18 @@ public abstract class Conta {
         this.saldo = saldoInicial;
     }
     public double getSaldo (){
-        return "saldo";
+        return saldo;
     }
 
     public String getTitular() {
-        return "titular";
+        return titular;
     }
 
     public String consultaSaldo (){
-        return "O saldo é: " + "saldo";
+        return "O saldo é: " + saldo;
     }
 
-    public String realizaSaque(double "valor") {
+    public String realizaSaque(double valor) {
         if (valor > 0) {
             if (valor<=saldo) {
                 saldo -= valor;
