@@ -1,58 +1,64 @@
 package banco.modelo;
-public abstract class Conta {
-   private double saldo;
-   private String titular;
 
-    public Conta (String titular, double saldoInicial){
+public abstract class Conta {
+    private double saldo;
+    private String titular;
+
+    public Conta(String titular, double saldo){
         this.titular = titular;
-        this.saldo = saldoInicial;
+        this.saldo = saldo;
     }
-    public double getSaldo (){
-        return "saldo";
+
+    public double getSaldo() {
+        return saldo;
     }
 
     public String getTitular() {
-        return "titular";
+        return titular;
     }
 
-    public String consultaSaldo (){
-        return "O saldo é: " + "saldo";
+    protected void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
-    public String realizaSaque(double "valor") {
-        if (valor > 0) {
-            if (valor<=saldo) {
-                saldo -= valor;
-                return "Saque realizado com sucesso. O novo saldo é: " + saldo;
-            } else {
-                return "Seu saldo é insuficiente.";
-            }}
-        else {
-            return "O valor não pode ser negativo.";
+    // SAQUE
+    public void realizarSaque(double valor) {
+        if (valor > 0 && valor <= saldo) {
+            saldo -= valor;
+            System.out.println("Saque realizado. Novo saldo: " + saldo);
+        } else {
+            System.out.println("Erro no saque.");
         }
     }
 
-    public String realizaDeposito(double valor) {
+    // DEPÓSITO
+    public void realizarDeposito(double valor) {
         if (valor > 0) {
             saldo += valor;
-            return "Valor depositado com sucesso. O novo saldo é: " + saldo;
+            System.out.println("Depósito realizado. Novo saldo: " + saldo);
         } else {
-            return "O valor não pode ser negativo.";
+            System.out.println("Valor inválido para depósito.");
         }
     }
 
-    public String realizaTransferencia(double valor) {
-        if (valor > 0) {
-            if (valor <=saldo){
-                saldo -= valor;
-                return "Valor transferido com sucesso. O novo saldo é: " + saldo;
-            } else {
-                return "Saldo insuficiente.";
-            }
+    // TRANSFERÊNCIA
+    public void realizarTransferencia(double valor, Conta destino) {
+        if (valor > 0 && valor <= saldo) {
+            this.saldo -= valor;
+            destino.saldo += valor;
+            System.out.println("Transferência realizada.");
+        } else {
+            System.out.println("Erro na transferência.");
         }
-        else {
-            return "O valor não pode ser negativo.";
-        }
+    }
 
+    // CONSULTAR SALDO
+    public void consultarSaldo() {
+        System.out.println("Saldo: " + saldo);
+    }
+
+    public void dadosConta() {
+        System.out.println("Titular: " + titular);
+        System.out.println("Saldo: " + saldo);
     }
 }
